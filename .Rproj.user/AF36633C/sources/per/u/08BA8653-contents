@@ -1,0 +1,38 @@
+library(tidyverse)
+mydata %>% head
+temp <- summary(mydata %>% filter(year == 2011) %>%
+  lm(suicide_rate ~ divorce_number_per_population, data =.))
+temp$coefficients
+
+temp1 <-  mydata %>% filter(year == 2011) %>%
+      aov(suicide_rate ~ divorce_number_per_population, data =.)
+summary(temp1)
+setwd("C:/A/FINAL/data")
+ll <- read.csv("lm_data.csv")
+ll %>% filter(p_value >= 0.05)
+lll <- lm(suicide_rate ~ population + temperature +
+            healthy_life + divorce_number_per_population +
+            income_per_capita, data = mydata)
+
+
+l_year <- lm(suicide_rate ~ year, data = mydata)
+summary(lll)
+summary(l_year)
+prcomp()
+library(factoextra)
+tt <- mydata %>% select(suicide_rate, population, temperature,
+                  healthy_life, divorce_number_per_population,
+                  income_per_capita)
+pca_tt <- tt %>% select(-suicide_rate)
+library(ggcorrplot)
+ggcorrplot(cor(tt %>% select(-suicide_rate)))
+plot(prcomp(cor(tt %>% select(-suicide_rate)), scale = TRUE))
+summary(prcomp(cor(tt %>% select(-suicide_rate))))
+model <- prcomp(pca_tt %>% select(), scale = T)
+summary(model)
+screeplot(model, type = "line")
+biplot(model)
+autoplot(model, loadings = T, circle = T)
+
+
+rm(model, pca_tt, tt, lll,ll, l_year, temp, temp1)

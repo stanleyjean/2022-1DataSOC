@@ -1,0 +1,12 @@
+project파일을 바로 실행하지 않는 경우에는 아래 순서대로 스크립트를 실행하면 됩니다. 
+1. reading_raw_data : e-지방지표 데이터 불러오기 
+2.data_modification : 불러온 데이터 변수 추출 
+3. variable_corr_check : 추출한 변수의 상관계수 확인  # var_data : 분석에 이용하는 데이터  
+# unsc_slct : 최종적으로 뽑아낸 데이터 -> rsquared.ipynb : 6번 연도별 시각화 위해서 필요한 데이터 구성 
+4. r_sqaured_check_1 : 변수별 ~ 자살률 rsqured 값 및 선형회귀 시각화 
+5. r_squared_check_2 : 변수별 ~ 자살률 rsqured 값 및 선형회귀 시각화 
+6. rsquared_yearly : 연도별 rsquared 값 변화 
+-- suicide_rate_check : 자살률 통계 시각화 
+-- significance_test :  연도별 R^2의 통계적 유의도 확인 
+
+suicide_reason : KOSIS 자살충동 이유 불러오기 및 데이터 시각화 
